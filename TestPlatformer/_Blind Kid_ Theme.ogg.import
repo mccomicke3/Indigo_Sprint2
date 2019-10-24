@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/_Blind Kid_ Theme.ogg-3ce9098c07e3e9d76b33d7617b68f6d9.oggstr"
+
+[deps]
+
+source_file="res://_Blind Kid_ Theme.ogg"
+dest_files=[ "res://.import/_Blind Kid_ Theme.ogg-3ce9098c07e3e9d76b33d7617b68f6d9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

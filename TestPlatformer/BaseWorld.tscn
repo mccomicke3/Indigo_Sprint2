@@ -1,56 +1,177 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://slime spritesheet calciumtrice.png" type="Texture" id=2]
+[ext_resource path="res://_Blind Kid_ Theme.ogg" type="AudioStream" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" type="Texture" id=5]
+[ext_resource path="res://2019_0710_dog_returned.jpg" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.9394, 31.1929 )
+extents = Vector2( 7.69852, 6.18375 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 33.1057, 35.8583 )
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 51, 52, 53, 54, 55, 56, 57, 58, 59 ]
+}
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+length = 0.35
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 72, 73, 74, 75 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Walk"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 61, 62, 63, 64, 65, 66, 67, 68, 69 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 70.6423, 185.18 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 31.9615, 32.5546 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 31.9615, 40.4447 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 12.2173, 16.3921 )
 
 [node name="BaseWorld" type="Node"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 390.139, 158.957 )
+position = Vector2( 364.408, 172.625 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( 0.461039, 0.461051 )
+scale = Vector2( 1.02881, 0.956778 )
 texture = ExtResource( 2 )
+vframes = 20
+hframes = 10
+frame = 75
 
 [node name="PlayerCollide" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 10 )
 shape = SubResource( 1 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Walk = SubResource( 4 )
+
 [node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+drag_margin_left = 0.05
+drag_margin_top = 0.05
+drag_margin_right = 0.05
+drag_margin_bottom = 0.05
+
+[node name="BaseMusic" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 3 )
+volume_db = 2.0
+autoplay = true
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2( 310.249, 237.936 )
+position = Vector2( 354.663, 384.292 )
 scale = Vector2( 9.76, 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Floor"]
-modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+modulate = Color( 0.392157, 0.980392, 0, 0.980392 )
+self_modulate = Color( 0.392157, 0.980392, 0, 0.980392 )
+position = Vector2( -0.0696793, 541.429 )
+scale = Vector2( 2.20871, 22.7235 )
+texture = ExtResource( 4 )
 
 [node name="FloorCollide" type="CollisionShape2D" parent="Floor"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2( 580.169, 168.776 )
+position = Vector2( 600.395, 34.0577 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Wall"]
-modulate = Color( 0.729412, 0, 0, 1 )
-texture = ExtResource( 2 )
+modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 1, 5 )
+texture = ExtResource( 4 )
 
 [node name="WallCollide" type="CollisionShape2D" parent="Wall"]
-shape = SubResource( 3 )
+scale = Vector2( 1, 5 )
+shape = SubResource( 6 )
+
+[node name="Tree" type="StaticBody2D" parent="."]
+position = Vector2( -12.7046, 48.2641 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Tree"]
+position = Vector2( 2.52131, -48.5742 )
+scale = Vector2( 0.531399, 0.649727 )
+texture = ExtResource( 5 )
+
+[node name="WallCollide" type="CollisionShape2D" parent="Tree"]
+position = Vector2( 0, -40 )
+scale = Vector2( 1, 5 )
+shape = SubResource( 7 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 227.507, 171.867 )
+mass = 5.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+position = Vector2( -0.126815, 0.138001 )
+scale = Vector2( 0.027461, 0.027461 )
+texture = ExtResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
