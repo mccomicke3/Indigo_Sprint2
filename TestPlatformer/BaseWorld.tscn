@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://slime spritesheet calciumtrice.png" type="Texture" id=2]
@@ -72,9 +72,13 @@ extents = Vector2( 31.9615, 40.4447 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 12.2173, 16.3921 )
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 21.5877, 20.4719 )
+
 [node name="BaseWorld" type="Node"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 364.408, 172.625 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -111,7 +115,10 @@ stream = ExtResource( 3 )
 volume_db = 2.0
 autoplay = true
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="." groups=[
+"WorldStatic",
+]]
+editor/display_folded = true
 position = Vector2( 354.663, 384.292 )
 scale = Vector2( 9.76, 1 )
 __meta__ = {
@@ -128,7 +135,10 @@ texture = ExtResource( 4 )
 [node name="FloorCollide" type="CollisionShape2D" parent="Floor"]
 shape = SubResource( 5 )
 
-[node name="Wall" type="StaticBody2D" parent="."]
+[node name="Wall" type="StaticBody2D" parent="." groups=[
+"WorldStatic",
+]]
+editor/display_folded = true
 position = Vector2( 600.395, 34.0577 )
 __meta__ = {
 "_edit_group_": true
@@ -143,7 +153,10 @@ texture = ExtResource( 4 )
 scale = Vector2( 1, 5 )
 shape = SubResource( 6 )
 
-[node name="Tree" type="StaticBody2D" parent="."]
+[node name="Tree" type="StaticBody2D" parent="." groups=[
+"WorldStatic",
+]]
+editor/display_folded = true
 position = Vector2( -12.7046, 48.2641 )
 __meta__ = {
 "_edit_group_": true
@@ -159,19 +172,73 @@ position = Vector2( 0, -40 )
 scale = Vector2( 1, 5 )
 shape = SubResource( 7 )
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Doggo" type="RigidBody2D" parent="." groups=[
+"Interactable",
+]]
+editor/display_folded = true
 position = Vector2( 227.507, 171.867 )
 mass = 5.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doggo"]
 shape = SubResource( 8 )
 
-[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+[node name="Sprite" type="Sprite" parent="Doggo"]
 position = Vector2( -0.126815, 0.138001 )
 scale = Vector2( 0.027461, 0.027461 )
 texture = ExtResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Fire" type="StaticBody2D" parent="." groups=[
+"fire",
+]]
+editor/display_folded = true
+position = Vector2( 439.963, 177.778 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire"]
+shape = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Fire"]
+modulate = Color( 0.968627, 0.12549, 0.12549, 1 )
+scale = Vector2( 0.628502, 0.628502 )
+texture = ExtResource( 4 )
+
+[node name="Water" type="StaticBody2D" parent="." groups=[
+"water",
+]]
+editor/display_folded = true
+position = Vector2( 526.358, 177.419 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+shape = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Water"]
+modulate = Color( 0.12549, 0.298039, 0.968627, 1 )
+scale = Vector2( 0.628502, 0.628502 )
+texture = ExtResource( 4 )
+
+[node name="Wind" type="StaticBody2D" parent="." groups=[
+"wind",
+]]
+editor/display_folded = true
+position = Vector2( 311.267, 177.778 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wind"]
+shape = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Wind"]
+modulate = Color( 0.172549, 0.968627, 0.12549, 1 )
+scale = Vector2( 0.628502, 0.628502 )
+texture = ExtResource( 4 )
