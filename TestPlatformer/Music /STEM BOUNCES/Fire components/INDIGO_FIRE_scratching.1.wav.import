@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/INDIGO_FIRE_scratching.1.wav-a4d977337a62d1aca933d5f055d8864c.sample"
+
+[deps]
+
+source_file="res://Music /STEM BOUNCES/Fire components/INDIGO_FIRE_scratching.1.wav"
+dest_files=[ "res://.import/INDIGO_FIRE_scratching.1.wav-a4d977337a62d1aca933d5f055d8864c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

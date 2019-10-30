@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/INDIGO_FIRE_all.1.wav-037bae8314711062fff58e315ad1e5e3.sample"
+
+[deps]
+
+source_file="res://Music /STEM BOUNCES/INDIGO_FIRE_all.1.wav"
+dest_files=[ "res://.import/INDIGO_FIRE_all.1.wav-037bae8314711062fff58e315ad1e5e3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
