@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/INDIGO_Piano.wav-b5633f4fe38a03705e30c99360f82d47.sample"
+
+[deps]
+
+source_file="res://Music/OCT 30 MIX/INDIGO_Piano.wav"
+dest_files=[ "res://.import/INDIGO_Piano.wav-b5633f4fe38a03705e30c99360f82d47.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

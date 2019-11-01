@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/INDIGO_ALL.wav-618d673a0b40597c9a859a91d83c7f6d.sample"
+
+[deps]
+
+source_file="res://Music/OCT 30 MIX/INDIGO_ALL.wav"
+dest_files=[ "res://.import/INDIGO_ALL.wav-618d673a0b40597c9a859a91d83c7f6d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
