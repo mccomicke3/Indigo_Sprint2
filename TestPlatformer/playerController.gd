@@ -7,7 +7,7 @@ var jumpHeight = 500
 var motion = Vector2()
 var jump_count = 1 
 
-enum ElementState{
+enum ElementState{ 
 	None,
 	Fire,
 	Water,

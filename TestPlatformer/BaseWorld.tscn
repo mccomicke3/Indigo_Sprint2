@@ -1,12 +1,14 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://2019_0710_dog_returned.jpg" type="Texture" id=2]
 [ext_resource path="res://d515mo1-542e7751-ee0a-461a-a383-bd1a90824873.png" type="Texture" id=3]
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=4]
+[ext_resource path="res://playerController.gd" type="Script" id=4]
 [ext_resource path="res://slime spritesheet calciumtrice.png" type="Texture" id=5]
 [ext_resource path="res://_Blind Kid_ Theme.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Menu.gd" type="Script" id=7]
+[ext_resource path="res://spiritController.gd" type="Script" id=8]
+[ext_resource path="res://Soul Standin.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 70.6423, 185.18 )
@@ -204,11 +206,8 @@ scale = Vector2( 1, 5 )
 shape = SubResource( 5 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 364.408, 172.625 )
+position = Vector2( 366.015, 145.322 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Player"]
 position = Vector2( 0.461039, 0.461051 )
@@ -219,6 +218,7 @@ hframes = 10
 frame = 75
 
 [node name="PlayerCollide" type="CollisionShape2D" parent="Player"]
+visible = false
 position = Vector2( 0, 10 )
 shape = SubResource( 6 )
 
@@ -228,6 +228,7 @@ anims/Jump = SubResource( 8 )
 anims/Walk = SubResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
 current = true
 zoom = Vector2( 0.5, 0.5 )
 drag_margin_left = 0.05
@@ -242,6 +243,7 @@ autoplay = true
 
 [node name="Menu" type="Control" parent="Player"]
 editor/display_folded = true
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -287,5 +289,32 @@ margin_top = 46.0
 margin_right = 94.0
 margin_bottom = 66.0
 text = "Quit Game"
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Player"]
+script = ExtResource( 8 )
+
+[node name="fireSpiritSprite" type="Sprite" parent="Player/KinematicBody2D"]
+modulate = Color( 0.941176, 0.266667, 0, 1 )
+light_mask = 0
+position = Vector2( -2.02637, -26.104 )
+rotation = -0.380482
+scale = Vector2( 0.06, 0.06 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="Player"]
+modulate = Color( 0.282353, 0.619608, 0.298039, 1 )
+light_mask = 0
+position = Vector2( 18.001, -15.0361 )
+rotation = -0.380482
+scale = Vector2( 0.06, 0.06 )
+texture = ExtResource( 9 )
+
+[node name="Sprite4" type="Sprite" parent="Player"]
+modulate = Color( 0.262745, 0.556863, 0.870588, 1 )
+light_mask = 0
+position = Vector2( -21.7905, -15.563 )
+rotation = -0.380482
+scale = Vector2( 0.06, 0.06 )
+texture = ExtResource( 9 )
 [connection signal="toggled" from="Player/Menu/VBoxContainer/bFullscreen" to="Player/Menu" method="_on_bFullscreen_toggled"]
 [connection signal="pressed" from="Player/Menu/VBoxContainer/Quit" to="Player/Menu" method="_on_Quit_pressed"]
