@@ -16,9 +16,9 @@ enum ElementState{
 var currentElement = ElementState.None
 
 func _physics_process(delta):
-	
 	_movement(delta)
 	_element_interaction()
+	_elementChange()
 	
 	if Input.is_action_just_pressed("ui_reset"):
 		get_tree().reload_current_scene()
@@ -41,6 +41,22 @@ func _element_interaction():
 			print("wind")
 			if (currentElement == ElementState.Wind):
 				get_col.collider.free()
+
+func _elementChange():
+	if Input.is_action_pressed("ui_4"):
+		currentElement = ElementState.None
+	if Input.is_action_pressed("ui_1"):
+		currentElement = ElementState.Fire
+	if Input.is_action_pressed("ui_2"):
+		currentElement = ElementState.Water
+	if Input.is_action_pressed("ui_3"):
+		currentElement = ElementState.Wind
+
+
+
+
+
+
 
 func _movement(delta):
 	motion.y += grav
