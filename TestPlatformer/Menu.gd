@@ -11,8 +11,12 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		visible = !visible
+		get_tree().paused = !get_tree().paused
 
-
+func _on_Resume_pressed():
+	visible = false
+	get_tree().paused = false
+		
 func _on_Quit_pressed():
 	get_tree().quit()
 
